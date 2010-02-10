@@ -22,8 +22,6 @@ if not options.force_build:
         print 'check build says no need to build; bye'
         sys.exit(0)
 
-(ret, out, err) = _run_command(['hg', 'clone', repo_url])
-assert ret == 0 , (out, err)
 
 context = VirtualenvContext()
 commands = [ HgClone(repo_url, name='checkout'),
