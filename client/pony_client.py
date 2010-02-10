@@ -495,7 +495,7 @@ class HgClone(SetupCommand):
 
         if self.use_cache and cache_dir:
             cwd = os.getcwd()
-            if os.path.isdir(dirname):
+            if os.path.isdir(cache_dir):
                 os.chdir(cache_dir)
                 cmdlist = ['hg', 'pull']
                 (ret, out, err) = _run_command(cmdlist)
@@ -531,7 +531,7 @@ class HgClone(SetupCommand):
         if cache_dir:
             location = cache_dir
 
-        cmdlist = ['hg', 'checkout', self.repository]
+        cmdlist = ['hg', 'clone', self.repository]
         (ret, out, err) = _run_command(cmdlist)
 
         self.results_dict['checkout'] = \
