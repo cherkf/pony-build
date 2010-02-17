@@ -23,7 +23,7 @@ if not options.force_build:
         sys.exit(0)
 
 
-context = VirtualenvContext()
+context = TempDirectoryContext()
 commands = [ HgClone(repo_url, name='checkout'),
              BuildCommand([python_exe, 'setup.py', 'build_ext', '-i'],
                           name='compile'),
@@ -32,7 +32,6 @@ commands = [ HgClone(repo_url, name='checkout'),
 
 results = do(name, commands, context=context)
 client_info, reslist, files = results
-
 if options.report:
     print 'result: %s; sending' % (client_info['success'],)
     send(server_url, results, tags=tags)
