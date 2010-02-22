@@ -7,7 +7,7 @@ from pony_client import BuildCommand, TestCommand, do, send,_run_command, \
 
 options, args = parse_cmdline()
 
-python_exe = 'python2.6'
+python_exe = 'python'
 if args:
     python_exe = args[0]
 
