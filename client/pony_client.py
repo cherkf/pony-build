@@ -523,6 +523,8 @@ class HgClone(SetupCommand):
             cache_dir = self.cache_dir
             if not cache_dir:
                 repo_dir = guess_cache_dir(dirname)
+                #repo_dir= os.path.normpath(repo_dir)
+                print "Here guessed repo_dir before creating "+ repo_dir
                 create_cache_dir(repo_dir,dirname)
                 pkglength = len(dirname)
                 cache_dir = repo_dir[:-pkglength]
